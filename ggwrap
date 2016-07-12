@@ -1,0 +1,12 @@
+
+ggwrap = function (dset, x, y, ...){
+ ggplot(dset, aes_string(x) ) + theme_bw() + 
+   geom_histogram() + 
+   geom_vline(xintercept = mean(mpg), colour = 'red')  +
+   geom_vline(xintercept = median(mpg),  colour = 'steelblue') +
+   facet_wrap(y)
+};
+
+vlist = as.list(c('mpg', 'disp'))
+
+ggwrap(mtcars, vlist[[2]], 'wt')
