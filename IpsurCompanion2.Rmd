@@ -1,0 +1,628 @@
+---
+title: "A of R, Matloff - Doc"
+author: "S K"
+date: \"`r format(Sys.time(), "%d %B, %Y")`\"
+output:
+   word_document:
+    toc: true
+    toc_depth: 5
+    fig_caption: true
+    number_sections: true
+    reference_docx: mystyles.docx
+tags: [nothing, nothingness]
+abstract: 
+	This is the abstract which should talk about the project in brief 
+
+stating what the objective was and what the findings are. Broadly also mention 
+
+which category of knowledge it belongs to what is the impact on science due to 
+
+this research. rmd.convert('IpsurCompanion2.Rmd', 'word') ## for a word document.
+
+
+---
+`r ch = 0`
+`r i = 0`
+
+
+# Chapter  
+
+## Setting the Output
+
+
+pdf("ah.pdf") 	# start graphical output file - the 'ah.pdf' file is created in 
+
+the current directory \n
+hist(rnorm(100)) # generate 100 N(0,1) variates and plot their histogram \n
+dev.off() 	# close the graphical output file
+
+
+
+## Data Types / Objectives
+There are no scalars in `R`; only vectors or length 1
+Let's make a simple data set (in R parlance, a *vector* ) consisting of the 
+
+numbers
+1, 2, and 4, and name it `x`:
+
+```{r options-chunk} 
+opts_chunk$set(fig.cap="Graphical representation")
+``` 
+```{r}
+x = c(1,2,4)
+
+```
+
+### Operations
+
+Remember that operations are done element-wise. i.e., one element of this to 
+
+one element of that. "NOT Cartesian" but linear.  This provides for Recycling 
+
+of elements and also of keeping the length of the output under control.
+
+
+### Vectors
+In R, vectors don't have dimensions, arrays do
+```{r}
+d = c(rep(3,4))
+dim(d)
+d.array = array(d)
+dim(d.array)
+d.dframe = data.frame(d)
+dim(d.dframe)
+
+```
+
+#### Changing elements of Vectors
+`> x <- c(88,5,12,13)
+> x <- c(x[1:3],168,x[4]) # insert 168 before the 13
+> x
+[1] 88 5 12 168 13`
+
+
+### Matrices
+A matrix is a long vector places using two dimensions; i.e., Vectors with 2 
+
+attributes 
+
+```{r}
+
+mat1 = matrix(seq(1:60), 2) ; mat1 # `matrix` *creates*
+mat2 = as.matrix(mat1)
+mat3 = matrix(vector2, nrow=3, ncol=4);
+```
+
+### Lists
+
+List are different from Vectors as they can contain data of different types 
+
+(`character` or `numeric` or `logical`).
+
+```{r}
+simplelistN = c(1,3,5); 	simplelistN;
+simplelistC = c('cd','de','ef');simplelistC;
+simplelistM = c(1, 'ab', '$'); 	simplelistM;
+# or more elequently;
+list(kids=c("Jack","Jill"),ages=c(12,10))
+
+```
+
+### Data Frames
+... it mixes types
+
+```{r}
+d <- data.frame(list(kids=c("Jack","Jill"),ages=c(12,10))) ; d;
+DF <- data.frame(a=1:5,b=6:10); DF;
+```
+
+### Classes
+*Objects* are instances of *classes*.
+The (nongraphical) output of the
+`hist()` histogram function is a list with various components, such as `break` 
+
+and
+`count` components. There was also an `attribute`, which specified the class of 
+
+the list, namely `histogram`.
+
+## Functions and Expressions
+Some of the simpler in-built functions
+
+```{r Plot_Of_Nile }
+
+x <- 1:5
+sum(x)
+length(x)
+min(x)
+mean(x)
+sd(x)
+var(x)
+
+
+mean(Nile)
+sd(Nile)
+hist(Nile)
+
+plot(Nile) # plot(Nile, main="title", sub="subtitle")
+
+```
+
+A *Generic Function* stands for a family of functions, all serving a similar 
+
+purpose but each appropriate to a specific class
+When you call `summary()` or `plot()-*`
+on some output, R searches for a summary function appropriate to the class
+at hand and uses it to give a friendlier representation of the list
+ 
+
+
+
+## Models
+Some standard models
+
+### Linear Models
+The `lm()` (for linear model) function call here instructs R to fit this 
+
+prediction
+equation:
+predicted Exam 2 = B0 + B1 Exam 1
+Here, B0 and B1 are constants (betas) to be estimated from our data
+
+`lma <- lm(examsquiz[,2] ~ examsquiz[,1])`
+
+The results returned by `lm()` are now in an object
+
+
+
+
+
+
+
+
+## New Functions
+A *function* is a group of instructions that takes inputs, uses them to compute 
+
+other values, and returns a result. Like a *macro* in SAS
+
+### First Function
+The following is an example of using an R function. The concepts shown are `in` 
+
+and `comparison` and uses one argument `x`
+```{r}
+ oddcount <- function(x) {
+ k <- 0 # assign 0 to k
+ for (n in x) {
+ if (n %% 2 == 1) k <- k+1 # %% is the modulo operator
+ }
+ return(k)
+ };
+
+```
+
+The outcome of running `oddcount(c(1,3,5));` is `r oddcount(c(1,3,5));` 
+and this -> oddcount(c(1,3,5,8,9,22)); is `r oddcount(c(1,3,5,8,9,22));`
+
+
+
+###  Second Function
+This funciton uses an example with two arguments `x` and `y`.
+
+Double enter _after this line_
+
+
+```{r }
+second = function(x,y) {
+ k = 0
+ for (i in x) {
+  if (i == y) k = 1 + k
+ }
+ return(k)
+};
+some_vector = c(2,3,4,2,2,2,5,5,5,5,3,3,4,4,4,2,2,3,3,3,3,3);
+
+```
+
+If we run 
+`second(c (2,3,4,2,2,2,5,5,5,5,3,3,4,4,4,2,2,3,3,3,3,3), 3)`, we get the answer 
+
+as 
+`r second(some_vector, 3)`, and that is reproducible research.
+
+
+### Mathematical Operators are Functions
+`==` and `+` and `*`, etc. are functions and can be written as `"=="()` and 
+
+`"+"()` and `"*"()`. Yeah.
+
+
+## Vector Manipulation
+We skipped certain parts of *Matrices* but we'll come back to them later.
+
+### Vector Indexing
+
+The format is `vector1[vector2]`, we select those elements of `vector1` whose 
+
+indices are given in
+`vector2`.
+
+```{r}
+y <- c(1.2,3.9,0.4,0.12)
+y[c(1,1,3)] # extract first, first and 3rd elements  of y; Yes, duplicating is 
+
+allowed.
+
+
+```
+
+... and use negative indices to *remove* the elements like this:
+
+```{r}
+y <- c(1.2,3.9,0.4,0.12)
+y[c(-2)] # drops the second element and returns everything
+```
+
+### Vectors by `Sequence` and `Repeat`
+
+Create a sequence from `a` (which defaults to 1) to `b` in the call form `seq
+
+(from= , to=, by=, length=)`
+and for repeats, the call form is `rep(x,times)`
+
+```{r}
+
+seq(3:100); # `from=' defaults to 1, it only takes the length from here;
+
+seqb = seq(from=4, to=11); # `by=' defaults to 1;
+print(seqb);
+
+rp <- rep(8,4) # and for repeats
+print(rp)
+
+```
+
+### Vector Operations
+
+Vector in, Vector out. In the following example, it can be seen that the vector 
+
+operations are one item at a time for every vector;
+Like creating a new variables. No great shakes.
+
+```{r}
+u <- c(5,2,8)
+v <- c(1,3,9)
+u > v
+yesno = u > v # this puts the value in an object. This the recommended way to 
+
+do things.
+
+```
+This only means that if you apply a function on a vector of length 'x', then it 
+
+will output a vector of length 'x'. 
+However, know that there's a difference between transcedental functions 
+
+(horizontal - scalar operations: like square root, log ) and summary functions 
+
+(vertical - like column or vector; example: mean, sum, variance)
+
+
+### Family of Function `apply` 
+
+Let's look at some running examples:
+
+```{r}
+z12 <- function(z) {
+	return(c(z,z^2))
+}
+x <- 1:8
+z12(x)
+
+```
+
+#### sapply
+`sapply()` applies a function to an object (vector) and returns a matrix
+
+```{r}
+SappEx = sapply(1:8,z12) # applying the z12 function on the vector 1 to 8.
+str(SappEx)
+SappEx
+
+```
+#### lapply
+`lapply()` applies a function to an object and returns a list
+```{r}
+lapply(list(1:3,25:29),median)
+```
+
+## NA and NULL Values
+
+### `NA`
+NA are counted as unknown. Most arithmetic functions will fail if `NA` is part 
+
+of the vector. Missings will be treated like `NA`. It has a mode and it is 
+
+"logical".
+```{r}
+x <- c(2,NA,4)
+mean(x);
+# with `na.rm=T' option
+mean(x, na.rm=T)
+
+```
+
+### `NULL` [in UpperCase] 
+NULL values really are counted as nonexistent. NULL is a special R object with 
+
+no mode.
+
+
+## Filtering
+
+Filtering can be done in three ways
+
+### Generating Filtering Indices: `vector1[vector2]` 
+
+By creating a TRUE FALSE vector, rows can be filtered out. See the example 
+
+below, where we want the elements from `z` such that hhe square of the element 
+
+is greater than 8. It basically is the form of `vector1[vector2]` where 
+
+`vector2` is the TRUE FALSE vector.
+
+```{r}
+z <- c(5,2,-3,8, NA)
+w <- z[z*z > 8]
+```
+
+### or using the `subset()` function
+
+When applied to vectors, the difference between using this function and 
+
+ordinary filtering lies in the manner in which NA values are handled. As 
+
+`vector1[vector2]` filtering can NOT understand the NA value, it returns an NA 
+
+value to the operation. `subset()` is stricter than that and it *removes* the 
+
+NA values.
+
+```{r}
+x <- c(6,1:3,NA,12)
+x[x > 5]
+subset(x,x > 5)
+
+```
+
+### or using the `which()` Function
+
+This function returns the indices of the elements that match the condition.
+
+```{r}
+z <- c(5,2,-3,8)
+which(z*z > 8)
+```
+
+## Vectorized if-then-else: The `ifelse()` Function
+
+`g = c("M" "F" "F" "I" "M" "M" "F");`
+
+# Matrices and Arrays
+
+## Storage
+
+The internal storage of a matrix is in `column-major` order, meaning that first 
+
+all of column 1 is stored, then all of column 2, and so on. 
+Create a matrix by calling the `matrix()` function. Like this `y <- matrix(seq
+
+(12),nrow=3,ncol=4);`.  
+Or *Recreate* another data frame or vector as matrix using, well, `as.matrix()
+
+`.
+It is only a vector of data *arranged* in a way that every element can be 
+
+accessed by the row and column characteristics. which means manipulatinos can 
+
+be done too.
+
+```{r}
+y
+
+as.mtr> as.matrix(warpbreaks[1:10,])  # using as.matrix(data.frame) method
+
+```
+A [linked phrase](id)
+
+`Talent hits the target no one else can hit; genius hits the target no one else 
+
+can see.`
+
+## Matrix Operations
+
+### Linear Operations
+
+#### Multiplication
+```{r}
+y %*% y # mathematical matrix multiplication
+
+3 * y 	# mathematical multiplication by scalar
+
+y + y 	# mathematical matrix addition
+```
+
+### Indexing
+
+Same as vector indexing, now with two dimensions,  like a data frame [row, col]
+Can be used to reassign, subset, etc.
+
+
+#### Covariance Matrix
+
+```{r}
+makecov <- function(rho,n) {
+ m <- matrix(nrow=n,ncol=n)
+ m <- ifelse(row(m) == col(m),1,rho)
+ return(m)
+}
+makecov(.22, 3)
+
+```
+
+#### `*apply()` Family on Matrices
+
+`apply()` instructs R to call a user-specified function on each of the rows.
+
+```{r}
+
+z = matrix(1:6, nrow=3); print(z);
+apply(z,2,mean) # here the `2` stands for "column wise" applicaiton
+apply(z,1,mean) # here the `1` stands for "row wise" applicaiton
+```
+
+# Data Frames
+Keep in mind that data frames are special cases of lists, with the list 
+
+components
+consisting of the data frame's columns
+
+## Creating Data Frames
+
+```{r}
+kids <- c("Jack","Jill")
+ ages <- c(12,10)
+ d <- data.frame(kids,ages,stringsAsFactors=FALSE)
+ d # matrix-like viewpoint
+
+# see the difference
+d[1]; # this lists the first column
+# lists the first column contents as a list.
+d[[1]]; 
+d$kids
+d[,1]
+
+# the matrix like quality is also seen using `str()'
+str(d)
+
+
+```
+
+
+
+
+
+# Mergin datasets
+`d1 <- data.frame(c('Jack', 'Jill', 'Jillian', 'John'),c('CA', 'MA', 
+
+'MA','HI'))`
+
+`names(d1) = c('kids','st')`
+`d2 = data.frame(c(10,7,12), c('Jill', 'Jillian', 'Jack'))`
+
+` names(d2) = c("age","pals")` # changed from 'kids' to 'pals'
+
+
+## where the merging key has not the same name
+`merge(d1, d2, by.x="kids", by.y="pals")`
+
+# Plots by `ggplot()`
+```{r fig.cap='Graphical representation of data'}
+library(ggplot2)
+ggplot(mpg, aes(cty,hwy)) + 
+geom_point()
+ggplot(mpg, aes( cty, hwy)) +
+geom_line()
+
+ggplot(mpg, aes( cty, hwy)) + 
+ geom_point(aes(fill=cyl) )
+
+ggplot(mpg, aes( cty, hwy)) + 
+ geom_point(aes(color=cyl) )
+
+ggplot(mpg, aes( cty, hwy)) + 
+ geom_smooth() + 
+ geom_point()
+
+ggplot(mpg, aes( cty)) 	+ 
+ geom_smooth() + 
+ geom_bar() # + theme_bw()
+
+ggplot(mpg, aes(hwy, cty)) + 
+ geom_point(aes(color = cyl)) + 
+ geom_smooth(method ="lm") +
+ coord_cartesian() +
+ scale_color_gradient() +
+ theme_bw() 
+ 
+
+# single variable
+a <- ggplot(mpg, aes(hwy)) + theme_bw()
+a + geom_area(stat = "bin") 
+a + geom_density(kernel = "gaussian")
+a + geom_dotplot()
+a + geom_freqpoly()
+a + geom_histogram(binwidth = 1)
+a + geom_bar()
+
+
+c <- ggplot(map, aes(long, lat))
+c + geom_polygon()
+c + geom_polygon(aes(group = group)) + theme_minimal()
+c + geom_polygon(aes(group = group)) + theme_bw()
+
+d <- ggplot(economics, aes(date, unemploy))
+d + geom_path(lineend="butt", linejoin="round", linemitre=1)
+d + geom_ribbon(aes(ymin=unemploy - 900, ymax=unemploy + 2000))
+
+df = data.frame(c(1,2,4))
+colnames(df) = 'var1'
+df[,2] = c(2,3,5)
+data(df)
+e = ggplot(df, aes(var1, V2))
+e + geom_rect(aes(xmin= var1, ymin= V2, xmax= var1+2, ymax= V2 +2), colour = 
+
+'blue', fill = 'yellow')
+
+# Understanding line graphs
+head(economics)
+d <- ggplot(economics, aes(date, unemploy))
+d +
+ geom_line(color= 'blue') + geom_smooth(method = 'lm')
+ geom_line(aes(y=pop, colour= pce) ) + # the aes() requires an object to be 
+
+passed to the `colour='
+ geom_line(aes(y=pop/4), colour = 'pink')
+
+library(stargazer)
+head(mtcars)
+stargazer(head(mtcars), type = "text") # defaults to summary statistics = TRUE
+stargazer(head(mtcars), type = "text", summary = FALSE)
+
+ggwrap = function (dset, x, y, ...){
+ localenv <- environment()
+ mean1= mean(dset[,x], na.rm = TRUE)
+ median1= median(dset[,x], na.rm = TRUE)
+ print(paste("Mean1 of",x,"is", mean1))
+
+ ggplot(dset, aes_string(x), environment = localenv ) + theme_bw() + 
+   geom_histogram() + 
+   geom_vline(xintercept = mean1, colour = 'red')  +
+   geom_vline(xintercept = median1,  colour = 'steelblue') +
+   facet_wrap(y)
+};
+
+vlist = as.list(c("mpg", "disp"))
+for (la in c(1:length(vlist))){ 
+ print(paste("la = ",la));
+ print(ggwrap(mtcars, vlist[[la]], "wt")) ;
+}
+
+
+
+```
+
+
+
+# The End
+
