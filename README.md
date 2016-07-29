@@ -8,13 +8,13 @@ Apply actions on objects. Don't take yourObjects inside function. Take function 
 
 ```
 #df1 = mtcars 
-f1 = function(ds) {
+fn1 = function(ds) {
  ds[,length(ds)+1] = ds[,length(ds)-3]
  return(ds)
 }
-df1 = f1(df1)
+df1 = fn1(df1)
 ```
-It's the `df1 = f1(df1)` that actually *affects* the object; the RHS there is an unnamed temporary object about to expire at the next call.
+It's the `df1 = fn1(df1)` that actually *affects* the object; the RHS there is an unnamed temporary object about to expire at the next call.
 
 ### return()
 Statements *after* `return()` will not be returned. ~Wan.Wan~
