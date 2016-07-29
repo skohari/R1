@@ -1,12 +1,18 @@
+# Flag for whether there are missing values.
 missing_val_var <- function(data,variable,new_var_name) {
   data$new_var_name <- ifelse(is.na(variable),1,0))
   return(data$new_var_name)
 }
 
-#Replaces missing value with `mean'
-numeric_impute <- function(data,variable) {
+#`NUMERIC' Replaces missing value with `mean'
+numeric_impute <- function(data,variable, newVar) {
   mean1 <- mean(data$variable)
-  data$variable <- ifelse(is.na(data$variable),mean1,data$variable)
-  return(new_var_name)
+  data$newVar <- ifelse(is.na(data$variable),mean1,data$variable)
+  return(data$newVar)
 }
 
+# `CATEGORICAL' Replaces missing with NULL
+categ_impute <- function(data,variable, newVar) {
+  data$newVar <- ifelse(is.na(data$variable),NULL,data$variable)
+  return(data$newVar)
+}
