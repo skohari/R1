@@ -19,4 +19,18 @@ It's the `df1 = fn1(df1)` that actually *affects* the object; the RHS there is a
 ### return()
 Statements *after* `return()` will not be returned. ~Wan.Wan~
 
+#### Next - Work this out!
+```
+#df1 = mtcars
+f1 = function(ds) {
+ ds[,length(ds)+1] = ds[,length(ds)-3]
+ ds[nrow(ds)-2, length(ds)] = NA
+ ifelse(is.na(ds[,length(ds)]), 9, (ds[,length(ds)]))
+ return(ds)
+}
+df1 = f1(df1)
+df1
+
+#nrow(df1)
+```
 
