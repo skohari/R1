@@ -20,7 +20,7 @@ It's the `df1 = fn1(df1)` that actually *affects* the object; the RHS there is a
 Statements *after* `return()` will not be returned. ~Wan.Wan~
 
 #### Next - Work this out!
-Replaces `NA` value created, and through an `ifelse` with a `12`
+Replaces `NA` value created, and through an `ifelse` with a `12`, else they're `*100` 
 ```
 #df1 = mtcars
 
