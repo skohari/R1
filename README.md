@@ -6,7 +6,7 @@
 Never write a function to change datasets. Functions are action. 
 Apply actions on objects. Don't take yourObjects inside function. Take function outputs to yourObjects
 
-```
+```{r}
 #df1 = mtcars 
 fn1 = function(ds) {
  ds[,length(ds)+1] = ds[,length(ds)-3]
@@ -21,9 +21,8 @@ Statements *after* `return()` will not be returned. ~Wan.Wan~
 
 #### Next - Work this out!
 Replaces `NA` value created, and through an `ifelse()` with a `12`, else they're `*100` 
-```
+```{r}
 #df1 = mtcars
-
 f1 = function(ds) {
  ds[,length(ds)+1] = ds[,length(ds)-3]
  ds[nrow(ds)-2, length(ds)] = NA
@@ -33,5 +32,27 @@ f1 = function(ds) {
 df2 = f1(df1) ; df2
 
 #nrow(df2)
+```
+### repeat()
+The `repeat{}` **loop** processes a block of code until the condition specified by the `break` statement (mandatory within the `repeat{}`), is met. The structure  is:
+
+```
+repeat {
+ commands
+ if(condition) {
+  break
+ }
+}
+```
+
+Let's try and example:
+
+```{r}
+repeat { 
+ commands
+ if(condition) {
+  break
+ }
+}
 ```
 
