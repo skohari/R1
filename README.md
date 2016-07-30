@@ -20,17 +20,18 @@ It's the `df1 = fn1(df1)` that actually *affects* the object; the RHS there is a
 Statements *after* `return()` will not be returned. ~Wan.Wan~
 
 #### Next - Work this out!
+Replaces `NA` value created, and through an `ifelse` with a `12`
 ```
 #df1 = mtcars
+
 f1 = function(ds) {
  ds[,length(ds)+1] = ds[,length(ds)-3]
  ds[nrow(ds)-2, length(ds)] = NA
- ifelse(is.na(ds[,length(ds)]), 9, (ds[,length(ds)]))
+ ds[,length(ds)] = ifelse(is.na(ds[,length(ds)]),12, (ds[,length(ds)])*100)
  return(ds)
 }
-df1 = f1(df1)
-df1
+df2 = f1(df1) ; df2
 
-#nrow(df1)
+#nrow(df2)
 ```
 
