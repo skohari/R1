@@ -33,7 +33,7 @@ df2 = f1(df1) ; df2
 
 #nrow(df2)
 ```
-### repeat(): It's a do-loop
+### repeat-break: It's a do-loop
 The `repeat{}` **loop** processes a block of code until the condition specified by the `break` statement (mandatory within the `repeat{}`), is met. The structure  is:
 
 ```{r}
@@ -45,7 +45,8 @@ repeat {
 }
 ```
 
-Let's try and example:For the first exercise, write a repeat{} loop that prints all the even numbers from 2 – 10, via incrementing the variable, “i <- 0“.
+Let's try and example:For the first exercise, write a repeat{} loop that prints all the even numbers from 2 – 10, via incrementing the variable, “i = 0“.
+
 ```{r}
 msg = "Hello"
 i = 1;
