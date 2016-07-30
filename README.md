@@ -45,7 +45,7 @@ repeat {
 }
 ```
 
-Let's try and example: For the first exercise, write a repeat{} loop that prints all the even numbers from 2 – 10, via incrementing the variable, “i = 0“.
+Let's try and example: For the first exercise, write a `repeat{}` loop that prints all the even numbers from `2 – 10`, via incrementing the variable, `i = 0`.
 
 ```{r}
 msg = "Hello"
