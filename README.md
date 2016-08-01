@@ -17,7 +17,7 @@ df1 = fn1(df1)
 It's the `df1 = fn1(df1)` that actually *affects* the object; the RHS there is an unnamed temporary object about to expire at the next call.
 
 ### return()
-Statements *after* `return()` will not be returned. ~Wan.Wan~
+`return()` is **the** exit point for a function. Multple `return()` statements can be used like decision tree, or a flow control, but only one will be used; either the relevant one or the first one, if all are relevant.
 
 #### Exercise 
 Replaces `NA` value created, and through an `ifelse()` with a `12`, else they're `*100` 
