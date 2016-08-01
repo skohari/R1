@@ -68,8 +68,8 @@ repeat {
   }
 }
 ```
-### for() loop 
-write a `for()` loop that uses `next` to print all values except `3` in the following variable: `i = 1:5`
+### for(i in x) loop 
+write a `for(i in ...)` loop that uses `next` to print all values except `3` in the following variable: `i = 1:5`
 ```{r}
 for(i in 1:5) {
   if(i == 3){
@@ -119,3 +119,15 @@ for(a in 1:5) {
 }
 ```
 
+
+Exercise 3
+Create a function that given a data frame will print by screen the name of the column and the class of data it contains (e.g. Variable1 is Numeric).
+
+```{r}
+fn3 = function(dset){
+ for (i in 1 : length(dset)) {
+  print(paste(names(dset)[i], "is", class(dset[,i])))
+ }
+}
+fn3(airquality)
+```
