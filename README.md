@@ -39,7 +39,8 @@ df2 = f1(df1) ; df2
 Main loops are `repeat()`, `for()`, and `while()`. These only control flow of code. The flow is in same environment as the start of the loop.
 Loops have break mechanism, mainly `break` (break the loop completely) and `next` (go to the *next iteration* in the loop).
 
-### repeat-break: It's a do-loop
+
+### repeat() loop
 The `repeat{}` **loop** processes a block of code until the condition specified by the `break` statement (mandatory within the `repeat{}`), is met. The structure  is:
 
 ```{r}
@@ -67,10 +68,18 @@ repeat {
   }
 }
 ```
+### for() loop 
+write a `for()` loop that uses `next` to print all values except `3` in the following variable: `i = 1:5`
+```{r}
+for(i in 1:5) {
+  if(i == 3){
+   next
+  }
+  print(i) 
+}
+```
 
-### The break statement 
-is used within loops to exit from the loop. If the break statement is within a nested loop, the inner loop is exited, and the outer loop is resumed.
-
+### while() loop
 Write a `while()` loop that prints the variable, `i`, (that is incremented from `1 - 5`), and uses break to exit the loop if `i` equals `3`.
 ```{r}
 i = 1;
@@ -83,8 +92,19 @@ while(i <= 5){
 }
 
 ```
+Write a `while()` loop that prints the variable, `i`, that is incremented from `1 – 7`, and uses the `next` statement, to skip the printing of the number `5`.
+```{r}
+i = 1
+while (i <= 7) {
+  i = i + 1;
+  if(i == 5) {
+    next
+  }    
+  print (i+10);
+}
+```
 
-### Write a nested loop, 
+### Nested loops, 
 Where the outer `for()` loop increments `a` 5 times, and the inner `for()` loop increments `b` 4 times. The `break` statement exits the inner `for()` loop after 2 incrementations. The nested loop prints the values of variables, `a` and `b`.
 ```{r}
 for(a in 1:5) {
@@ -98,24 +118,4 @@ for(a in 1:5) {
   a = a + 1  
 }
 ```
-#### `next` statement
-write a `while()` loop that prints the variable, `i`, that is incremented from `2 – 5`, and uses the `next` statement, to skip the printing of the number 3.
-```{r}
-i = 1
-while (i <= 7) {
-  i = i + 1;
-  if(i == 5) {
-    next
-  }    
-  print (i+10);
-}
-```
-write a `for()` loop that uses `next` to print all values except `3` in the following variable: `i = 1:5`
-```{r}
-for(i in 1:5) {
-  if(i == 3){
-   next
-  }
-  print(i) 
-}
-```
+
