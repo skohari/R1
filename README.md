@@ -3,8 +3,7 @@
 ## on Functions
 
 ### Lesson 1: What happens in Functions, stays in Functions
-Never write a function to change datasets. Functions are action. 
-Apply actions on objects. Don't take yourObjects inside function. Take function outputs to yourObjects
+Functions are actions. Apply actions on objects. Hold the temporary object of a Function through `return()`. Don't take yourObjects inside function. Take function outputs to yourObjects.
 
 ```{r}
 #df1 = mtcars 
@@ -14,12 +13,13 @@ fn1 = function(ds) {
 }
 df1 = fn1(df1)
 ```
+
 It's the `df1 = fn1(df1)` that actually *affects* the object; the RHS there is an unnamed temporary object about to expire at the next call.
 
 ### return()
 Statements *after* `return()` will not be returned. ~Wan.Wan~
 
-#### Next - Work this out!
+#### Exercise 
 Replaces `NA` value created, and through an `ifelse()` with a `12`, else they're `*100` 
 ```{r}
 #df1 = mtcars
@@ -33,6 +33,12 @@ df2 = f1(df1) ; df2
 
 #nrow(df2)
 ```
+
+## Loops as Process Control Structures
+
+Main loops are `repeat()`, `for()`, and `while()`. These only control flow of code. The flow is in same environment as the start of the loop.
+Loops have break mechanism, mainly `break` (break the loop completely) and `next` (go to the *next iteration* in the loop).
+
 ### repeat-break: It's a do-loop
 The `repeat{}` **loop** processes a block of code until the condition specified by the `break` statement (mandatory within the `repeat{}`), is met. The structure  is:
 
