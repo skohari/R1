@@ -129,8 +129,9 @@ fn3 = function(dset){
   print(paste(names(dset)[i], "is", class(dset[,i])))
  }
 }
+
 fn3(airquality)
- fn3(airquality)
+
 #[1] "Ozone is integer"
 #[1] "Solar.R is integer"
 #[1] "Wind is numeric"
