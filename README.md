@@ -130,4 +130,12 @@ fn3 = function(dset){
  }
 }
 fn3(airquality)
+ fn3(airquality)
+#[1] "Ozone is integer"
+#[1] "Solar.R is integer"
+#[1] "Wind is numeric"
+#[1] "Temp is integer"
+#[1] "Month is integer"
+#[1] "Day is integer"
+
 ```
