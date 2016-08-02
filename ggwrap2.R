@@ -21,7 +21,7 @@ testplot <- function(aDf, a, b) {
 		)
 	)
 }
-graphWrapFn = function(aDf, dep_var, varlist){
+graphWrapFn <- function(aDf, dep_var, varlist){
 		for(i in 1:length(varlist)){
 			print(testplot(aDf, varlist[i], dep_var))
 		}
