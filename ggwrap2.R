@@ -3,9 +3,9 @@
 ##ggwrap2
 
 #### 
-wkdf = mtcars
-dep_var = 'mpg'
-varlist1 = c('disp', 'drat', 'hp' )
+wkdf <- mtcars
+dep_var <- 'mpg'
+varlist1 <- c('disp', 'drat', 'hp' )
 
 testplot <- function(aDf, a, b) {
 	localenv <- environment()
