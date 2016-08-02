@@ -8,14 +8,14 @@ wkdf <- mtcars
 dep_var <- 'mpg'
 varlist1 <- c('disp', 'drat', 'hp' )
 
-testplot <- function(aDf=aDf, a=xvar, b=yvar, color = a) {
+testplot <- function(aDf= aDf, a= xvar, b= yvar, color= a) {
 	localenv <- environment()
-	p <- ggplot(aDf,aes_string(x = a, y = b, color = color), environment = localenv);
-	p <- p + geom_point() + geom_smooth(method = lm) ;
-	p <- p + theme_bw() + theme(text=element_text(family="CalibriL"));
-	p <- p + labs(list(title = paste("Linear Regression: ", b , "on", a), 
-					subtitle = "Subtitle", 
-					x = a, y = b)
+	p <- ggplot(aDf,aes_string(x = a, y = b, color= color), environment= localenv);
+	p <- p + geom_point() + geom_smooth(method= lm) ;
+	p <- p + theme_bw() + theme(text= element_text(family= "CalibriL"));
+	p <- p + labs(list(title= paste("Linear Regression: ", b , "on", a), 
+				subtitle= "Subtitle", 
+				x= a, y= b)
 			);
   	return(p);
 }
