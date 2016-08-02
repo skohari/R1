@@ -10,15 +10,14 @@ varlist1 = c('disp', 'drat', 'hp' )
 testplot <- function(aDf, a, b) {
 	localenv <- environment()
 	p <- ggplot(aDf,aes_string(x = a, y = b, color = a),
-			environment = localenv		
-	) + theme_bw()
-  	return(
-		p + geom_point() + geom_smooth(method = lm)  +
-		labs(list(	title = paste("Linear Regression: ", b , "on ", a), 
+		environment = localenv) 
+		+ theme_bw()
+  	return(p + geom_point() + geom_smooth(method = lm)  +
+			labs(list(title = paste("Linear Regression: ", b , "on ", a), 
 					subtitle = "Subtitle", 
 					x = a, y = b
+				)
 			)
-		)
 	)
 }
 graphWrapFn <- function(aDf, dep_var, varlist){
