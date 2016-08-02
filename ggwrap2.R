@@ -1,20 +1,33 @@
 
 ##ggwrap2
+##ggwrap2
 
-testplot <- function(aDf, a, b){
-	localenv <- environment()
-	p <- ggplot(aDf, 
-      	aes_string(color = a, x = a, y = b),
-		environment = localenv		
-	)
-  	p + geom_point() + geom_smooth(method = lm) + theme_bw()
-}
-
+#### 
+wkdf = mtcars
 dep_var = 'mpg'
-var1 = c('disp', 'wt')
+varlist1 = c('disp', 'drat', 'hp' )
 
-for(i in 1:length(var1)){
-	print(testplot(mtcars, var1[i], dep_var))
+testplot <- function(aDf, a, b) {
+	localenv <- environment()
+	p <- ggplot(aDf,aes_string(x = a, y = b, color = a),
+			environment = localenv		
+	) + theme_bw()
+  	return(
+		p + geom_point() + geom_smooth(method = lm)  +
+		labs(list(	title = paste("Linear Regression: ", b , "on ", a), 
+					subtitle = "Subtitle", 
+					x = a, y = b
+			)
+		)
+	)
+}
+graphWrapFn = function(aDf, dep_var, varlist){
+		for(i in 1:length(varlist)){
+			print(testplot(aDf, varlist[i], dep_var))
+		}
 }
 
-####
+graphWrapFn(wkdf, dep_var, varlist1);
+
+
+
