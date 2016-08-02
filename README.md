@@ -1,9 +1,3 @@
----
-title: R1
-layout: default
-output: bookdown::html_chapter
----
-
 # R1
 
 ## on Functions
