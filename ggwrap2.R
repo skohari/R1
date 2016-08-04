@@ -16,7 +16,7 @@ testplot <- function(aDf= aDf, a= xvar, b= yvar, color= a) {
 	p <- p + labs(list(title= paste("Linear Regression: ", b , "on", a), 
 				subtitle= "Subtitle", 
 				x= a, y= b)
-			);
+	);
   	return(p);
 }
 graphWrapFn <- function(aDf, dep_var, varlist, color=dep_var){
