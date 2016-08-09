@@ -7,7 +7,7 @@ inTraining <- createDataPartition(Sonar$Class, p = 0.75, list = FALSE) 	# Decisi
 training <- Sonar[ inTraining,]
 testing  <- Sonar[-inTraining,]
 dset1 = list(training, testing, training); length(dset1)
-targetVar <- 'Class';                                            # Decicion Point
+targetVar <- 'Class';                                               # Decicion Point
 
 fitControl <- trainControl(## 10-fold CV
                            method = "repeatedcv", 	             # Decision Point
