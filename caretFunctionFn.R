@@ -20,12 +20,16 @@ tv <- as.formula(paste(targetVar, "~", "."));
 
 set.seed(825)
 for(i in 1:length(dset1)) {
- gbmFit1 <- train(as.formula(tv), data = as.data.frame(dset1[i]),
-                 method = "lda", 				              # Decision Point
-                 trControl = fitControl,
-                 verbose = FALSE)
- print(gbmFit1)
+  gbmFit1 <- train(
+                  as.formula(tv), data = as.data.frame(dset1[i]),
+                  method = "lda", 				                  # Decision Point
+                  trControl = fitControl,
+                  verbose = FALSE
+  )
+  print(gbmFit1)
 }
+
 predict(gbmFit1, newdata= training)
+
 sum(predict(gbmFit1, newdata= training) == training$Class) 
 
