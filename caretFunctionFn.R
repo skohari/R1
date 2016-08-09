@@ -6,7 +6,7 @@ set.seed(998)
 inTraining <- createDataPartition(Sonar$Class, p = 0.75, list = FALSE) 	# Decision Point
 training <- Sonar[ inTraining,]
 testing  <- Sonar[-inTraining,]
-dset1 = list(training, testing, training); length(dset1)
+dset1 = list(training, testing, training); 
 targetVar <- 'Class';                                               # Decicion Point
 
 fitControl <- trainControl(## 10-fold CV
