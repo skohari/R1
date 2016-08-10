@@ -1,3 +1,72 @@
 
 
 # About
+Model Development JTID
+A wrapper tool to develop first cut model using `R` packages
+
+August 10, 2016
+Shahzeb Kohari
+
+
+# 1	Overall framework
+
+## 1.1	Set-up
+1.	In the flow, `running` aspects are taken care of by the tool; `direction` or `choice` elements are provided by the modeler. This reduces the modelers involvement to only `choice points` or `decision points` (these choice points can also be defaulted if the modeler is not making a choice).
+2.	Modeler throws in, post processing, missing and extreme value adjusted, rectangular data (it is advisable to remove problematic variables, or pseudo-response variables that can unduly affect the outcome of the modeling).
+a.	rectangular data
+b.	`response variable` or target variable.
+
+## 1.2	Kick-off
+
+### 1.2.1	Go/No-go Diagnostics
+1.	Tool generates data diagnostics. Modeler gives a `Go/No-go`. 
+a.	On `No-go`, process loops to 1.1 Set-up. 
+b.	On `Go`, process continues to 1.2.2 Coarse Cut.
+
+## 1.3	Data partition
+Modeler chooses the training/testing datasets. If from the original data then, [70/30? ] for training and testing. 
+
+# 2	Factor analysis
+Tool generates clusters of variables that stand for orthogonal factors. 
+Taking it from “>100” variables to `100` variables. Techniques to be considered
+1.	High Correlation
+2.	Factor Analysis: An underlying or latent construct that ‘causes’ the observed variables, to a greater or lesser extent. Algebraically, a factor is estimated by a linear combination of observed variables. When the `best fitting` factors are found, it should be remembered that these factors are not unique; it can be shown that any rotation of the best-fitting factors is also best-fitting. We use the criterion of ‘interpretability’ to select the `best` rotation among the equally `good` rotations: To be useful, factors should be interpretable. Rotation of factors is used to improve the interpretability of factors. `Loadings` are the degree to which the variable is driven or `caused` by the factor; akin to the size of the `path coefficient` in a causal diagram, Factor –> Variable. 
+a.	The loadings are  ui and vi in Xi=uiF1+viF2+ei
+3.	Low-variance
+4.	Missing Value, under conditions
+
+## 2.1	Coarse cut 
+
+### 2.1.1	Variable reduction
+Tool creates `groups of similar variables`.
+1.	Tool generates clusters of variables that are similar within but distinct across. 
+2.	Chooses the best of each cluster based on some information criteria. This is the `top-[100?]` variables.  
+3.	Tool demonstrates the correlation of each cluster with itself and with the response variable
+
+##2.2	Fine Modeling
+
+###2.2.1	Variable selection
+1.	Tool creates a set of [5?] combinations of variables that give the highest R-squared.
+2.	Modeler has the option to continue with the choice or 
+a.	Add another set of variables. 
+3.	Modeler chooses the type of model that’s needed: 
+b.	Decision Tree, Logistic, 
+c.	Generalized Linear, etc.
+4.	A
+
+#3	Final model development
+5.	Produces top three models; from which the modeler can choose the best.
+
+#4	Notes on framework 
+4.1	
+4.2	Variable Reduction
+Taking it from > 100 variables to 100 variables. Techniques to be considered
+5.	High Correlation
+6.	Factor Analysis: An underlying or latent construct that ‘causes’ the observed variables, to a greater or lesser extent. Algebraically, a factor is estimated by a linear combination of observed variables. When the `best fitting’ factors are found, it should be remembered that these factors are not unique; it can be shown that any rotation of the best-fitting factors is also best-fitting. We use the criterion of ‘interpretability’ to select the `best’ rotation among the equally `good’ rotations: To be useful, factors should be interpretable. Rotation of factors is used to improve the interpretability of factors. `Loadings’ are the degree to which the variable is driven or `caused’ by the factor; akin to the size of the `path coefficient’ in a causal diagram, Factor –> Variable. 
+a.	The loadings are  ui and vi in Xi=uiF1+viF2+ei
+7.	Low-variance
+8.	Missing Value, under conditions
+4.3	Variable Selection
+
+
+
