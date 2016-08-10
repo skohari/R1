@@ -84,3 +84,5 @@ a.	The loadings are  ui and vi in Xi=uiF1+viF2+ei
 
 
 
+
+
