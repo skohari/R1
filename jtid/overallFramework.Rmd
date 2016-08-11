@@ -75,8 +75,8 @@ c.	Generalized Linear, etc.
 #4.2	Variable Reduction
 Taking it from > 100 variables to 100 variables. Techniques to be considered
 5.	High Correlation
-6.	Factor Analysis: An underlying or latent construct that ‘causes’ the observed variables, to a greater or lesser extent. Algebraically, a factor is estimated by a linear combination of observed variables. When the 'best fitting’ factors are found, it should be remembered that these factors are not unique; it can be shown that any rotation of the best-fitting factors is also best-fitting. We use the criterion of 'interpretability' to select the 'best' rotation among the equally 'good' rotations: To be useful, factors should be interpretable. Rotation of factors is used to improve the interpretability of factors. 
-'Loadings' are the degree to which the variable is driven or 'caused' by the factor; akin to the size of the `path coefficient’ in a causal diagram, Factor –> Variable. 
+6.	Factor Analysis: An underlying or latent construct that ‘causes’ the observed variables, to a greater or lesser extent. Algebraically, a factor is estimated by a linear combination of observed variables. When the 'best fitting' factors are found, it should be remembered that these factors are not unique; it can be shown that any rotation of the best-fitting factors is also best-fitting. We use the criterion of 'interpretability' to select the 'best' rotation among the equally 'good' rotations: To be useful, factors should be interpretable. Rotation of factors is used to improve the interpretability of factors. 
+'Loadings' are the degree to which the variable is driven or 'caused' by the factor; akin to the size of the 'path coefficient' in a causal diagram, Factor –> Variable. 
 a.	The loadings are  `ui` and `vi` in `Xi=uiF1+viF2+ei`
 7.	Low-variance
 8.	Missing Value, under conditions
