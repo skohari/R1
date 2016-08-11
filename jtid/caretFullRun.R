@@ -1,4 +1,6 @@
 library(C50)
+library(pROC);
+
 data(churn)
 str(churnTrain)
 
