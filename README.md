@@ -16,7 +16,7 @@ df1 = fn1(df1)
 
 It's the `df1 = fn1(df1)` that actually *affects* the object; the RHS there is an unnamed temporary object about to expire at the next call.
 
-### return()
+### `return()`
 `return()` is **the** exit point for a function. Multple `return()` statements can be used like decision tree, or a flow control, but only one will be used; either the relevant one or the first one (if all are relevant/read/executed).
 
 #### Exercise 
@@ -40,7 +40,7 @@ Main loops are `repeat()`, `for()`, and `while()`. These only control flow of co
 Loops have break mechanism, mainly `break` (break the loop completely) and `next` (go to the *next iteration* in the loop).
 
 
-### repeat() loop
+### `repeat()` loop
 The `repeat{}` **loop** processes a block of code until the condition specified by the `break` statement (mandatory within the `repeat{}`), is met. The structure  is:
 
 ```{r}
@@ -68,7 +68,7 @@ repeat {
   }
 }
 ```
-### for(i in x) loop 
+### `for(i in x)` loop 
 write a `for(i in ...)` loop that uses `next` to print all values except `3` in the following variable: `i = 1:5`
 ```{r}
 for(i in 1:5) {
@@ -79,7 +79,7 @@ for(i in 1:5) {
 }
 ```
 
-### while() loop
+### `while()` loop
 Write a `while()` loop that prints the variable, `i`, (that is incremented from `1 - 5`), and uses break to exit the loop if `i` equals `3`.
 ```{r}
 i = 1;
